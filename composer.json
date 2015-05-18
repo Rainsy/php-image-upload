@@ -1,0 +1,6 @@
+{
+	"require": {
+		"firebase/php-jwt": ">=1.0.0",
+		"eventviva/php-image-resize": "1.4.*"
+	}
+}

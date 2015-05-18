@@ -11,6 +11,7 @@ php를 이용하여 image를 업로드 합니다.
 - composer를 이용하여 필요한 외부 Library는 다음과 같이 추가합니다.
 
  - composer.json을 수정하여 추가할 Library를 명세합니다.
+```
 // composer.json
 "require" : {
     "firebase/php-jwt": ">=1.0.0",

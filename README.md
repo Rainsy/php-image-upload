@@ -57,3 +57,25 @@ $success = $image->getSuccess();
 - - - "width" "height" => 저장될 이미지의 크기입니다. http request에서 body의 "width"와 "height"를 무시합니다.
 - - - "crop" => 이미지를 자르기합니다. 선언된 경우 http request에서 body의 "crop"을 무시합니다.
 - - - - "width" "height" => 자르기할 크기입니다. 
+
+
+# 이미지 경로 (Image path)
+- upload.ini에서 명시된 directory는 upload.php가 존재하는 경로를 기준으로 한 상대경로 입니다.
+- upload.ini에서 명시된 directory는 실제로 존재할 것을 권장합니다.
+
+# 이미지 이름 (Image name)
+- upload.ini에 Authorization이 명시되어 있으면 fk_kids의 이름으로 저장합니다. (확장자는 유지됩니다.)
+- 토큰이 fk_parents의 경우 http request에서 body의 fk_kids의 값을 이름으로 저장합니다. (자식 등록여부는 미구현)
+- 토큰이 fk_admin의 경우도 위 경우와 같지만 자식 등록여부는 검사하지 않습니다.
+- upload.ini에 Authorization이 명시되지 않은 경우, 업로드한 파일 이름을 그대로 저장합니다.
+
+# HTTP Request body
+- HTTP Request는 POST방식으로 전달되어야 합니다.
+- 파일의 key값은 항상 "filename"으로 명시되어야 합니다. 
+- "directory"는 항상 명시되어야 합니다.
+- "width, height, crop"은 명시될 수 있지만, upload.ini의 설정값이 최우선 입니다. (body의 값은 무시됩니다.)
+- "crop"의 경우 배열로 "width"와 "height"가 명시되어야 합니다.
+
+# Response
+- 성공시 response code 200과 json형식으로 {"filename" : 저장된 파일 경로와 이름}을 리턴합니다.
+- 실패시 response code 500과 json형식으로 {"Error" : Error_message}을 리턴합니다.

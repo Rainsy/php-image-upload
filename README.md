@@ -22,7 +22,7 @@ php를 이용하여 image를 업로드 합니다.
 ```
 
 
-!! eventviva/php-image-resize/ImageResize.php는 임의로 수정되었습니다. 만약 이 repository에 있는 파일을 사용하지 않는다면
+- !! eventviva/php-image-resize/ImageResize.php는 임의로 수정되었습니다. 만약 이 repository에 있는 파일을 사용하지 않는다면
 ```php
 $success = $image->getSuccess();
 ```

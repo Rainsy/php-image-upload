@@ -29,14 +29,12 @@ $init_directory = $init_json[directory][$directory];
 if($init_directory == null)
 	print_error("Invalid_directory");
 
-$name = $directory."/";
-
-
 if($init_directory[Authorization] == true)
 {	
+	$name = $directory."/";
 	$header = apache_request_headers();
 	$authorization = str_replace("Bearer ", "", $header[Authorization]);
-	$jwt = (array) (JWT:decode($authorization, $key, array('HS256')));
+	$jwt = (array) (JWT::decode($authorization, $key, array('HS256')));
 
 	$length = count($init_directory[Authorization]);
 
@@ -77,9 +75,6 @@ if($init_directory[Authorization] == true)
 	if( $isAuth == false )
 		print_error("Invaild_token");
 }
-else
-{
-}
 
 if ($_FILES)
 {
@@ -92,7 +87,10 @@ if ($_FILES)
 		default:
 				print_error('{"Error":"Invalid_file"}');
 	}
-	$name = $name.".".$ext;
+	if( $name )
+		$name = $name.".".$ext;
+	else
+		$name = $directory."/".$_FILES['filename']['name'];
 
 	$image = new Eventviva\ImageResize($_FILES['filename']['tmp_name']);
 

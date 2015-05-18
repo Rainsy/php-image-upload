@@ -3,7 +3,7 @@ php를 이용하여 image를 업로드 합니다.
 
 # 필수 조건 (Requirement)
 - PHP (>=5.3)
-- composer
+- composer (>=1.0.0)
 
 # 사용법 (Usage)
 - 일반적으로는 외부 Library는 포함하여 commit하지는 않지만, 편의를 위해 포함하였습니다.
